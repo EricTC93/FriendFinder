@@ -38,7 +38,8 @@ app.post("/survey", function(req, res) {
       parseInt(req.body.ques10)
     ]
 };
-	// console.log(newUser);
+	// console.log(totalDifference(newUser,friends[0]));
+	console.log(findClosestMatch(newUser));
 	friends.push(newUser);
 	res.sendFile(path.join(__dirname, "app/public/survey.html"));
 });
@@ -48,3 +49,32 @@ app.get("/api/friends", function(req, res) {
 });
 
 app.listen(PORT);
+
+function findClosestMatch(user) {
+	var smallestDiff = totalDifference(user,friends[0]);
+	var closest = friends[0];
+	for(var i = 1; i<friends.length; i++) {
+		var newDiff = totalDifference(user,friends[i]);
+		if (newDiff < smallestDiff) {
+			smallestDiff = newDiff;
+			closest = friends[i];
+		}
+	}
+	return closest;
+}
+
+function totalDifference(userA,userB) {
+	var totalDiff = 0;
+	for(var i = 0; i<userA.scores.length; i++) {
+		totalDiff+=absoluteDifference(userA.scores[i],userB.scores[i]);
+	}
+	return totalDiff;
+}
+
+function absoluteDifference(x,y) {
+	if (x > y){
+		return x-y;
+	}
+
+	return y-x;
+}
