@@ -2,8 +2,6 @@ $(document).ready(function() {
 
   $('select').select2({});
 
-  // $(".select2-selection__rendered").css("width","100px");
-
   $("#submit").on("click",function(event) {
     event.preventDefault();
 
@@ -54,5 +52,5 @@ $(document).ready(function() {
     });
 
   });
-  
+
 });

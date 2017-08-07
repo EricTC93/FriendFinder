@@ -13,9 +13,8 @@ module.exports = function(app) {
 			newUser.scores[i] = parseInt(newUser.scores[i]);
 		}
 
-		// console.log(newUser);
 		friends.push(newUser);
-		// console.log(findClosestMatch(newUser,friends));
+
 		res.send(findClosestMatch(newUser,friends));
 	});
 }
