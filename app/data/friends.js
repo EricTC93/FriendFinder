@@ -1,6 +1,6 @@
 var friends = [{
   "name":"Ahmed",
-  "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+  "photo":"http://www.imran.com/xyper_images/icon-user-default.png",
   "scores":[
       5,
       1,
@@ -15,7 +15,7 @@ var friends = [{
     ]
 },{
   "name":"Becky",
-  "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+  "photo":"http://www.imran.com/xyper_images/icon-user-default.png",
   "scores":[
       2,
       4,
@@ -30,7 +30,7 @@ var friends = [{
     ]
 },{
   "name":"Cole",
-  "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+  "photo":"http://www.imran.com/xyper_images/icon-user-default.png",
   "scores":[
       5,
       3,
