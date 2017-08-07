@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
+  // Initialize select2
   $('select').select2({});
 
+  // Signal a POST on click event
   $("#submit").on("click",function(event) {
     event.preventDefault();
 
@@ -10,6 +12,7 @@ $(document).ready(function() {
     var nameVal = $("#name").val().trim();
     var photoVal = $("#photo").val().trim();
 
+    // Form validation
     if (nameVal === "" || photoVal === "" || 
       $("#ques1").val() === null || $("#ques2").val() === null ||
       $("#ques3").val() === null || $("#ques4").val() === null ||
@@ -24,6 +27,7 @@ $(document).ready(function() {
 
     $("#error").hide();
 
+    // Creates user object
     var newUser = {
       "name":nameVal,
       "photo":photoVal,
@@ -41,9 +45,11 @@ $(document).ready(function() {
       ]
     };
 
+    // Clears fields
     $("#name").val("");
     $("#photo").val("");
 
+    // POSTs new user
     $.post(currentURL + "/api/friends", newUser, function(data) {
       console.log(data);
       $("#newFriendName").text(data.name);

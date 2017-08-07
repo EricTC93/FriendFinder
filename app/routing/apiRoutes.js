@@ -1,11 +1,15 @@
+// Dependencies
 var friends = require("../data/friends.js");
 
+// Routes
 module.exports = function(app) {
 
+	// Displays all friends saved in the server
 	app.get("/api/friends", function(req, res) {
 		res.json(friends);
 	});
 
+	// Adds new user to the friend array and returns the closest match to the user
 	app.post("/api/friends",function(req,res) {
 		var newUser = req.body;
 
@@ -19,6 +23,7 @@ module.exports = function(app) {
 	});
 }
 
+// Searches the user for the best match
 function findClosestMatch(user,Users) {
   var smallestDiff = 999;
   var closest;
@@ -36,6 +41,7 @@ function findClosestMatch(user,Users) {
 
 }
 
+// Caculates the total absolute differencies comparing the two users' scores
 function totalDifference(userA,userB) {
   var totalDiff = 0;
   for(var i = 0; i<userA.scores.length; i++) {
@@ -44,6 +50,7 @@ function totalDifference(userA,userB) {
   return totalDiff;
 }
 
+// Calculates absolute difference
 function absoluteDifference(x,y) {
   if (x > y){
     return x-y;
