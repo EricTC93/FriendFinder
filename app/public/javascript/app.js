@@ -3,9 +3,20 @@ $("#submit").on("click",function(event) {
 
   var currentURL = window.location.origin;
 
+  var nameVal = $("#name").val().trim();
+  var photoVal = $("#photo").val().trim();
+
+  if (nameVal === "" || photoVal === "") {
+    $("#error").html("*All fields are required*");
+    $("#error").show();
+    return;
+  }
+
+  $("#error").hide();
+
   var newUser = {
-    "name":$("#name").val().trim(),
-    "photo":$("#photo").val().trim(),
+    "name":nameVal,
+    "photo":photoVal,
     "scores":[
       $("#ques1").val(),
       $("#ques2").val(),
