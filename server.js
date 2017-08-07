@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-var friends = require("./app/data/friends.js");
+// var friends = require("./app/data/friends.js");
 
 // console.log(friends);
 
@@ -15,13 +15,13 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("app/public"));
 
-app.get("/", function(req, res) {
-	res.sendFile(path.join(__dirname, "app/public/home.html"));
-});
+// app.get("/", function(req, res) {
+// 	res.sendFile(path.join(__dirname, "app/public/home.html"));
+// });
 
-app.get("/survey", function(req, res) {
-	res.sendFile(path.join(__dirname, "app/public/survey.html"));
-});
+// app.get("/survey", function(req, res) {
+// 	res.sendFile(path.join(__dirname, "app/public/survey.html"));
+// });
 
 // app.post("/survey", function(req, res) {
 // 	var newUser = {
@@ -46,54 +46,57 @@ app.get("/survey", function(req, res) {
 // 	res.sendFile(path.join(__dirname, "app/public/survey.html"));
 // });
 
-app.get("/api/friends", function(req, res) {
-	res.json(friends);
-});
+// app.get("/api/friends", function(req, res) {
+// 	res.json(friends);
+// });
 
-app.post("/api/friends",function(req,res) {
-	var newUser = req.body;
+// app.post("/api/friends",function(req,res) {
+// 	var newUser = req.body;
 
-	for (var i = 0; i<newUser.scores.length; i++) {
-		newUser.scores[i] = parseInt(newUser.scores[i]);
-	}
+// 	for (var i = 0; i<newUser.scores.length; i++) {
+// 		newUser.scores[i] = parseInt(newUser.scores[i]);
+// 	}
 
-	// console.log(newUser);
-	friends.push(newUser);
-	// console.log(findClosestMatch(newUser,friends));
-	res.send(findClosestMatch(newUser,friends));
-});
+// 	// console.log(newUser);
+// 	friends.push(newUser);
+// 	// console.log(findClosestMatch(newUser,friends));
+// 	res.send(findClosestMatch(newUser,friends));
+// });
+
+require("./app/routing/htmlRoutes.js")(app);
+require("./app/routing/apiRoutes.js")(app);
 
 app.listen(PORT);
 
-function findClosestMatch(user,Users) {
-  var smallestDiff = 999;
-  var closest;
-  for(var i = 0; i<Users.length; i++) {
-    if (user !== Users[i]) {
-      var newDiff = totalDifference(user,Users[i]);
-      if (newDiff < smallestDiff) {
-        smallestDiff = newDiff;
-        closest = Users[i];
-      }
-    }
-  }
+// function findClosestMatch(user,Users) {
+//   var smallestDiff = 999;
+//   var closest;
+//   for(var i = 0; i<Users.length; i++) {
+//     if (user !== Users[i]) {
+//       var newDiff = totalDifference(user,Users[i]);
+//       if (newDiff < smallestDiff) {
+//         smallestDiff = newDiff;
+//         closest = Users[i];
+//       }
+//     }
+//   }
 
-  return closest;
+//   return closest;
 
-}
+// }
 
-function totalDifference(userA,userB) {
-  var totalDiff = 0;
-  for(var i = 0; i<userA.scores.length; i++) {
-    totalDiff+=absoluteDifference(userA.scores[i],userB.scores[i]);
-  }
-  return totalDiff;
-}
+// function totalDifference(userA,userB) {
+//   var totalDiff = 0;
+//   for(var i = 0; i<userA.scores.length; i++) {
+//     totalDiff+=absoluteDifference(userA.scores[i],userB.scores[i]);
+//   }
+//   return totalDiff;
+// }
 
-function absoluteDifference(x,y) {
-  if (x > y){
-    return x-y;
-  }
+// function absoluteDifference(x,y) {
+//   if (x > y){
+//     return x-y;
+//   }
 
-  return y-x;
-}
+//   return y-x;
+// }
