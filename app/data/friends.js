@@ -1,6 +1,6 @@
 var friends = [{
   "name":"Ahmed",
-  "photo":"http://www.imran.com/xyper_images/icon-user-default.png",
+  "photo":"https://www.imran.com/xyper_images/icon-user-default.png",
   "scores":[
       5,
       1,
@@ -15,7 +15,7 @@ var friends = [{
     ]
 },{
   "name":"Becky",
-  "photo":"http://www.imran.com/xyper_images/icon-user-default.png",
+  "photo":"https://www.imran.com/xyper_images/icon-user-default.png",
   "scores":[
       2,
       4,
@@ -30,7 +30,7 @@ var friends = [{
     ]
 },{
   "name":"Cole",
-  "photo":"http://www.imran.com/xyper_images/icon-user-default.png",
+  "photo":"https://www.imran.com/xyper_images/icon-user-default.png",
   "scores":[
       5,
       3,
